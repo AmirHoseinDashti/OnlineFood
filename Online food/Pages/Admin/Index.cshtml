@@ -1,0 +1,45 @@
+﻿@page
+@model Online_food.Pages.Admin.IndexModel
+@{
+    ViewData["Title"] = "Index";
+}
+<h1>لیست محصولات</h1>
+
+<div class="col-md">
+    <div class="card shadow">
+        <div class="card-body">
+            <!-- table -->
+            <table class="table table-borderless table-hover">
+                <thead>
+                <tr>
+                    <th>تصویر</th>
+                    <th>نام محصول</th>
+                    <th>توضیحات</th>
+                    <th>قیمت</th>
+                </tr>
+                </thead>
+                <tbody>
+                @foreach (var item in Model.Products)
+                {
+                    <tr>
+                        <td>
+                            <div>
+                                <img src="~/images/@(item.Id).jpg" style="max-width: 130px; max-height: 130px; border: 1px solid gold; padding: 3px" alt="...">
+                            </div>
+                        </td>
+                        <td>
+                            <h4 class="mb-0 text-muted"><strong>@item.Name</strong></h4>
+                        </td>
+                        <td>
+                            <p class="mb-0 text-muted">@item.Description</p>
+                        </td>
+                        <td>
+                            <small class="mb-0 text-muted">@item.Item.Price</small>
+                        </td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

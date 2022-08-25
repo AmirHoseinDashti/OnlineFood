@@ -1,0 +1,64 @@
+﻿@page
+@model Online_food.Pages.Admin.AddProductModel
+@{
+    ViewData["Title"] = "AddProduct";
+}
+<form method="post" enctype="multipart/form-data">
+<div class="card shadow mb-4">
+    <div class="card-header">
+        <strong class="card-title">افزودن محصول جدید</strong>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-4">
+                        <div class="form-group mb-3">
+                            <label for="simpleinput" asp-for="Product.Name">نام غذا</label>
+                            <input type="text" id="simpleinput" class="form-control" asp-for="Product.Name">
+                            <span asp-validation-for="Product.Name" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="form-group mb-3">
+                            <label asp-for="Product.Price" for="simpleinput">قیمت غذا</label>
+                            <input asp-for="Product.Price" type="text" id="simpleinput" class="form-control">
+                            <span asp-validation-for="Product.Price" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="form-group mb-3">
+                            <label asp-for="Product.QuantityInStock" for="simpleinput">تعداد</label>
+                            <input type="number" asp-for="Product.QuantityInStock" id="simpleinput" class="form-control">
+                            <span asp-validation-for="Product.QuantityInStock" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group mb-3">
+                    <label asp-for="Product.Description" for="simpleinput">توضیحات غذا</label>
+                    <textarea asp-for="Product.Description" type="text" id="simpleinput" class="form-control" placeholder="توضیحات کوتاه"></textarea>
+                    <span asp-validation-for="Product.Description" class="text-danger"></span>
+                </div>
+                <div class="form-group mb-3">
+                    <label asp-for="Product.Image" for="customFile">تصویر غذا</label>
+                    <div class="custom-file">
+                        <input asp-for="Product.Image" type="file" class="custom-file-input" id="customFile">
+                        <span asp-validation-for="Product.Image" class="text-danger"></span>
+                        <label class="custom-file-label" for="customFile">تصویر غذای مورد نظر</label>
+                    </div>
+                </div>
+                <label>گروه</label>
+                <dt>
+                    @foreach (var item in Model.Product.Categories)
+                    {
+                        <p>
+                            <input type="checkbox" name="SelectGroups" value="@item.Id"/>@item.Name
+                        </p>
+                    }
+                  </dt>
+                <input type="submit" class="btn mb-2 btn-success" value="ثبت"/>
+            </div> 
+        </div>
+    </div>
+</div>
+</form>

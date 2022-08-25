@@ -1,0 +1,49 @@
+﻿@page
+@model Online_food.Pages.Admin.IndexModel
+@{
+    ViewData["Title"] = "Index";
+}
+<div class="card shadow">
+    <div class="card-body">
+        <!-- table -->
+        <table class="table table-borderless table-hover">
+            <thead>
+            <tr>
+                <th>تصویر</th>
+                <th>نام محصول</th>
+                <th>توضیحات</th>
+                <th>تغییرات</th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach (var item in Model.Products)
+            {
+                <tr>
+                    <td>
+                        <div>
+                            <img src="~/images/@(item.Id).jpg" style="max-width: 130px; max-height: 130px; border: 1px solid gold; padding: 3px" alt="...">
+                        </div>
+                    </td>
+                    <td>
+                        <h4 class="mb-0 text-muted"><strong>@item.Name</strong></h4>
+                    </td>
+                    <td>
+                        <p class="mb-0 text-muted">@item.Description</p>
+                    </td>
+                    <td>
+                        <button class="btn btn-sm dropdown-toggle more-horizontal" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span class="text-muted sr-only">تغییرات</span>
+                        </button>
+                        <div class="row">
+                            <div class="dropdown-menu dropdown-menu-right">
+                                <a class="dropdown-item" asp-page="EditProduct" asp-route-id="@item.Id">ویرایش</a>
+                                <a class="dropdown-item" asp-page="DeleteProduct" asp-route-id="@item.Id">حذف</a>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    </div>
+</div>

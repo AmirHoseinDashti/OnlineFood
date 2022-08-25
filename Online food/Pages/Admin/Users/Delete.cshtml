@@ -1,0 +1,70 @@
+﻿@page
+@model Online_food.Pages.Admin.Users.DeleteModel
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>حذف کاربر</h1>
+
+<div class="card-header">
+    <strong class="card-title">آیا از حذف این کاربر مطمئن هستید؟</strong>
+</div>
+<hr />
+<div>
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Users.FullName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Users.FullName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Users.Phone)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Users.Phone)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Users.Address)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Users.Address)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Users.Postalcode)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Users.Postalcode)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Users.Plaque)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Users.Plaque)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Users.Password)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Users.Password)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Users.RegisterDate)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Users.RegisterDate)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Users.IsAdmin)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Users.IsAdmin)
+        </dd>
+    </dl>
+
+    <form method="post">
+        <input type="hidden" asp-for="Users.UserId" />
+        <input type="submit" value="حذف کاربر" class="btn btn-danger" />
+    </form>
+</div>

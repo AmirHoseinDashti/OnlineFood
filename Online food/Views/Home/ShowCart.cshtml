@@ -1,0 +1,76 @@
+﻿@model Order
+@{
+    ViewData["Title"] = "سبد خرید";
+    Layout = "_Pages";
+}
+<br />
+<br />
+@if (Model != null)
+{
+    <section class="book_section layout_padding">
+        <div class="container">
+            <div class="heading_container">
+                <h2>
+                    سبد خرید
+                </h2>
+            </div>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">
+                            محصول
+                        </th>
+                        <th scope="col">
+                            تعداد
+                        </th>
+                        <th scope="col">
+                            قیمت
+                        </th>
+                        <th scope="col">
+                            عملیات
+                        </th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @foreach (var item in Model.OrderDetails)
+                    {
+                        <tr>
+                            <td>
+                                <img src="~/images/@(item.Product.ItemId).jpg" style="max-width: 50px; max-height: 50px; border: 1px solid gold; padding: 3px" class="ml-3 cart-item-img" alt="...">
+                                @item.Product.Name
+                            </td>
+                            <td>
+                                @item.Count
+                            </td>
+                            <td>
+                                @(item.Count * item.Price)
+                            </td>
+                            <td>
+                                <a asp-action="addNewItem" asp-route-detailId="@item.DetailId" class="btn btn-sm btn-primary">
+                                    افزودن
+                                </a>
+                                <a asp-action="RemoveCart" asp-route-detailId="@item.DetailId" class="btn btn-sm btn-danger">
+                                    حذف
+                                </a>
+                            </td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+            <h5>جمع کل: @Model.OrderDetails.Sum(s=> s.Count * s.Price) تومان</h5>
+            <p>
+                <a class="btn btn-success" asp-action="Payment">ثبت و پرداخت نهایی </a>
+            </p>
+        </div>
+    </section>
+
+
+}
+else
+{
+    <div class="alert alert-danger">فاکتوری موجود نیست.</div>
+}
+<br />
+<br />

@@ -1,0 +1,75 @@
+﻿@model ProductandCategory
+@{
+    ViewData["Title"] = "فهرست غذا";
+    Layout = "_Pages";
+}
+
+<!-- food section -->
+<br />
+<br />
+<section class="food_section layout_padding-bottom">
+    <div class="container">
+        <div class="heading_container heading_center">
+            <h2>
+                فهرست غذاها
+            </h2>
+        </div>
+
+        <div class="filters-content">
+            <div class="row grid">
+                <div id="placeholder"></div>
+                @foreach (var item in Model.Products)
+                {
+                    <div class="col-sm-6 col-lg-4 all burger">
+                        <div class="box">
+                            <div>
+                                <div class="img-box">
+                                    <img src="~/images/@(item.ItemId).jpg"/>
+                                </div>
+                                <div class="detail-box">
+                                    <h5>
+                                        @item.Name
+                                    </h5>
+                                    <p>
+                                        @item.Description
+                                    </p>
+                                    <div class="options">
+                                        <h6>
+                                            قیمت: @item.Item.Price تومان
+                                        </h6>
+                                        <div class="btn btn-box">
+                                            <button
+                                                data-toggle="create" data-url="/Home/Details?id=@item.Item.Id" data-toggle="modal" data-target="#exampleModal">
+                                                <i class="fa fa-shopping-basket"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div> 
+        </div>
+    </div>
+</section>
+<br />
+<br />
+<!-- end food section -->
+
+@section Scripts
+{
+    <script>
+        var placeholder = $('#placeholder'); 
+        $('button[data-toggle="create"]').click(function () { 
+            var url = $(this).data('url');
+            console.log(url);
+            $.get(url,
+                null,
+                (data) => {
+                    placeholder.html(data);
+                    placeholder.find('.modal').modal('show');
+                });
+        });
+    </script>
+}

@@ -1,0 +1,86 @@
+﻿@page
+@model Online_food.Pages.Admin.Users.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="card-header">
+    <strong class="card-title">ویرایش مشخصات کاربر</strong>
+</div>
+<hr/>
+<br/>
+<div class="row">
+    <div class="col-md-12">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="row">
+                <div class="col-6">
+                    <div class="form-group">
+                        <label asp-for="Users.FullName" class="control-label"></label>
+                        <input asp-for="Users.FullName" class="form-control"/>
+                        <span asp-validation-for="Users.FullName" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="form-group">
+                        <label asp-for="Users.Phone" class="control-label"></label>
+                        <input asp-for="Users.Phone" class="form-control"/>
+                        <span asp-validation-for="Users.Phone" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6">
+                    <div class="form-group">
+                        <label asp-for="Users.Address" class="control-label"></label>
+                        <input asp-for="Users.Address" class="form-control"/>
+                        <span asp-validation-for="Users.Address" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="form-group">
+                        <label asp-for="Users.Postalcode" class="control-label"></label>
+                        <input asp-for="Users.Postalcode" class="form-control"/>
+                        <span asp-validation-for="Users.Postalcode" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6">
+                    <div class="form-group">
+                        <label asp-for="Users.Plaque" class="control-label"></label>
+                        <input asp-for="Users.Plaque" class="form-control"/>
+                        <span asp-validation-for="Users.Plaque" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="form-group">
+                        <label asp-for="Users.Password" class="control-label"></label>
+                        <input asp-for="Users.Password" class="form-control"/>
+                        <span asp-validation-for="Users.Password" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row col-6">
+                <div class="form-group">
+                    <label asp-for="Users.RegisterDate" class="control-label"></label>
+                    <input asp-for="Users.RegisterDate" class="form-control"/>
+                    <span asp-validation-for="Users.RegisterDate" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Users.IsAdmin" /> @Html.DisplayNameFor(model => model.Users.IsAdmin)
+                </label>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="افزودن کاربر" class="btn btn-success" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

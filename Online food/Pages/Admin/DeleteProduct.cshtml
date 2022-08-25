@@ -1,0 +1,33 @@
+﻿@page
+@model Online_food.Pages.Admin.DeleteProductModel
+@{
+    ViewData["Title"] = "Delete";
+}
+<form method="post">
+    <div class="card shadow mb-4">
+        <div class="card-header">
+            <strong class="card-title">حذف محصول </strong>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group mb-3">
+                        <label for="simpleinput" asp-for="Product.Name">نام غذا</label>
+                        <input type="text" id="simpleinput" class="form-control" asp-for="Product.Name" readonly>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label asp-for="Product.Description" for="simpleinput">توضیحات غذا</label>
+                        <input asp-for="Product.Description" type="text" id="simpleinput" class="form-control" placeholder="توضیحات کوتاه" readonly> 
+                        <span asp-validation-for="Product.Description"></span>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label asp-for="Product.Item.Id" for="simpleinput">تصویر</label>
+                        <img src="/images/@(Model.Product.Id).jpg" style="max-width: 200px"/>
+                    </div>
+                    <input type="hidden" asp-for="Product.Id"/>
+                    <input type="submit" class="btn btn-danger" value="حذف"/>
+                </div> 
+            </div>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,82 @@
+﻿@page
+@model Online_food.Pages.Admin.Users.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="card shadow">
+    <div class="card-header">
+        <strong class="card-title">مدیریت کاربران</strong>
+    </div>
+    <div class="card-body">
+        <!-- table -->
+        <table class="table table-borderless table-hover">
+            <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Users[0].FullName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Users[0].Phone)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Users[0].Address)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Users[0].Postalcode)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Users[0].Plaque)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Users[0].RegisterDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Users[0].IsAdmin)
+                </th>
+                <th>مدیریت</th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach (var item in Model.Users)
+            {
+                <tr>
+                    <td>
+                        <div>
+                            @Html.DisplayFor(modelItem => item.FullName)
+                        </div>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Phone)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Address)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Postalcode)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Plaque)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.RegisterDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IsAdmin)
+                    </td>
+                    <td>
+                        <button class="btn btn-sm dropdown-toggle more-horizontal" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span class="text-muted sr-only">مدیریت</span>
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-right">
+                            <a class="dropdown-item" asp-page="./Edit" asp-route-id="@item.UserId">ویرایش</a>
+                            <a class="dropdown-item" asp-page="./Delete" asp-route-id="@item.UserId">حذف</a>
+                        </div>
+                    </td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    </div>
+</div>

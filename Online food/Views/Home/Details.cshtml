@@ -1,0 +1,46 @@
+﻿@model GroupViewModel
+@{
+    ViewData["Title"] = "Details";
+}
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog text-center" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">جزئیات محصول</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div>
+                    <div class="img-box">
+                        <img src="~/images/@(Model.Product.ItemId).jpg" height="219"/>
+                    </div>
+                    <br/>
+                    <h5>
+                        @Model.Product.Name
+                    </h5>
+                    <p>
+                        @Model.Product.Description
+                    </p>
+                    <div class="options">
+                        <h6>
+                            قیمت: @Model.Product.Item.Price تومان
+                        </h6>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center">
+                <a
+                    asp-controller="Home"
+                    asp-action="AddToCart"
+                    asp-route-itemId="@Model.Product.ItemId"
+                    type="button" class="btn btn-outline-danger">افزودن به سبد خرید</a>
+                <hr/>
+            </div>
+        </div>
+    </div>
+</div>
