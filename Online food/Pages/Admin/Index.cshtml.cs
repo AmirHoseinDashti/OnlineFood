@@ -1,9 +1,12 @@
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using Online_food.Data;
 using Online_food.Models;
+using Online_food.Models.ViewModels;
 
 namespace Online_food.Pages.Admin
 {
@@ -15,10 +18,26 @@ namespace Online_food.Pages.Admin
         {
             _context = context;
         }
-        public IEnumerable<Product> Products { get; set; }
-        public void OnGet()
+
+        [BindProperty]
+        public ProductsViewModel ProductsViewModel { get; set; }
+        public void OnGet(int pageId = 1)
         {
-            Products = _context.Products.Include(p=> p.Item);
+            ProductsViewModel = new ProductsViewModel()
+            {
+                Products = _context.Products.Include(p => p.Item),
+            };
+            StringBuilder param = new StringBuilder();
+            param.Append("/Product?pageId=:");
+            var Count = ProductsViewModel.Products.Count();
+            ProductsViewModel.PagingInfo = new pagingInfo()
+            {
+                CurrentPage = pageId,
+                ItemPage = 5,
+                TotalItems = Count,
+                UrlParam = param.ToString()
+            };
+            ProductsViewModel.Products = ProductsViewModel.Products.OrderBy(u=> u.Name).Skip((pageId -1 ) * 5).Take(5).ToList();
         }
 
         public void OnPost()
