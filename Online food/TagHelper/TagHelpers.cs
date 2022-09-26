@@ -20,7 +20,7 @@ namespace Online_food.TagHelper
         [ViewContext]
         [HtmlAttributeNotBound]
         public ViewContext ViewContext { get; set; }
-        public pagingInfo PagingInfo { get; set; }
+        public pagingInfo PageModel { get; set; }
         public string PageAction { get; set; }
         public string PageClass { get; set; }
         public string PageClassNormal { get; set; }
@@ -31,13 +31,13 @@ namespace Online_food.TagHelper
             IUrlHelper urlHelper = urlHelperFactory.GetUrlHelper(ViewContext);
             TagBuilder result = new TagBuilder("div");
 
-            for (int i = 1; i <= PagingInfo.TotalItems; i++)
+            for (int i = 1; i <= PageModel.TotalPage; i++)
             {
                 TagBuilder tag = new TagBuilder("a");
-                string Url = PagingInfo.UrlParam.Replace(":", i.ToString());
+                string Url = PageModel.UrlParam.Replace(":", i.ToString());
                 tag.Attributes["href"] = Url;
                 tag.AddCssClass(PageClass);
-                tag.AddCssClass(i== PagingInfo.CurrentPage ? PageClassSelected : PageClassNormal);
+                tag.AddCssClass(i== PageModel.CurrentPage ? PageClassSelected : PageClassNormal);
                 tag.InnerHtml.Append(i.ToString());
                 result.InnerHtml.AppendHtml(tag);
             }

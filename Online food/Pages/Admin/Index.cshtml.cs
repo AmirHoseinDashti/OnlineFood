@@ -33,11 +33,11 @@ namespace Online_food.Pages.Admin
             ProductsViewModel.PagingInfo = new pagingInfo()
             {
                 CurrentPage = pageId,
-                ItemPage = 5,
+                ItemPage = 2,
                 TotalItems = Count,
                 UrlParam = param.ToString()
             };
-            ProductsViewModel.Products = ProductsViewModel.Products.OrderBy(u=> u.Name).Skip((pageId -1 ) * 5).Take(5).ToList();
+            ProductsViewModel.Products = ProductsViewModel.Products.OrderBy(u=> u.Name).Skip((pageId -1 ) * 2).Take(2).ToList();
         }
 
         public void OnPost()

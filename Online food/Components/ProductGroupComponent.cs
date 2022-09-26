@@ -17,5 +17,10 @@ namespace Online_food.Components
         {
             return View("/Views/Product/ShowProduct.cshtml");
         }
+
+        // public IViewComponentResult Invoke()
+        // {
+        //     return View("/Views/Product/ShowProduct.cshtml");
+        // }
     }
 }

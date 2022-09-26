@@ -15,5 +15,9 @@
     <WebStackScaffolding_DbContextTypeFullName>Online_food.Data.OnlineFoodContext</WebStackScaffolding_DbContextTypeFullName>
     <NameOfLastUsedPublishProfile>A:\Food Shop\Online food\Online food\Properties\PublishProfiles\FolderProfile.pubxml</NameOfLastUsedPublishProfile>
     <WebStackScaffolding_LayoutPageFile />
+    <ActiveDebugProfile>IIS Express</ActiveDebugProfile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DebuggerFlavor>ProjectDebugger</DebuggerFlavor>
   </PropertyGroup>
 </Project>
